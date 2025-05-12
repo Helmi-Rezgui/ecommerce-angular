@@ -17,28 +17,8 @@ import { FooterComponent } from './components/footer/footer.component';
     SpecialOffersComponent,
     FooterComponent
   ],
-  template: `
-    <div class="app-container">
-      <app-header></app-header>
-      <main>
-        <app-banner></app-banner>
-        <app-products-section></app-products-section>
-        <app-special-offers></app-special-offers>
-      </main>
-      <app-footer></app-footer>
-    </div>
-  `,
-  styles: [`
-    .app-container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main {
-      flex: 1;
-    }
-  `]
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'LuxeShop';
