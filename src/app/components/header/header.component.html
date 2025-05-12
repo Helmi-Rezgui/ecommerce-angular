@@ -1,0 +1,65 @@
+<header [class.scrolled]="isScrolled">
+  <div class="container header-container">
+    <div class="logo">
+      <img src="/assets/Logo.png" alt="LuxeShop Logo" class="logo-image">
+      <h1>LuxeShop</h1>
+    </div>
+    <nav [class.active]="isMenuOpen">
+      <ul>
+        <li><a href="accueil" class="active">Accueil</a></li>
+        <li><a href="produits">Produits</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="btn btn-accent add-product-btn" (click)="openAddProductForm()">
+        <span class="icon">➕</span> Ajouter un produit
+      </button>
+      <div class="cart">
+        <span class="icon">🛒</span>
+        <span class="badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
+      </div>
+      <div class="login">
+        <span class="icon">🔐</span>
+      </div>
+      <button class="menu-toggle" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="add-product-modal" *ngIf="showAddProductForm">
+    <div class="modal-content">
+      <h2>Ajouter un nouveau produit</h2>
+      <form (submit)="addProduct($event)">
+        <div class="form-group">
+          <label for="name">Nom du produit</label>
+          <input type="text" id="name" [(ngModel)]="newProduct.name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Prix</label>
+          <input type="number" id="price" [(ngModel)]="newProduct.price" name="price" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" [(ngModel)]="newProduct.description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="imageUrl">URL de l'image</label>
+          <input type="url" id="imageUrl" [(ngModel)]="newProduct.imageUrl" name="imageUrl" required>
+        </div>
+        <div class="form-group">
+          <label for="category">Catégorie</label>
+          <input type="text" id="category" [(ngModel)]="newProduct.category" name="category" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" (click)="closeAddProductForm()">Annuler</button>
+          <button type="submit" class="btn btn-primary">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</header> 

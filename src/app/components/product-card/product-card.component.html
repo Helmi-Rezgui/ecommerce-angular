@@ -1,0 +1,30 @@
+<div class="product-card card">
+  <div class="product-image">
+    <img [src]="product.imageUrl" [alt]="product.name" />
+    <span class="discount-badge" *ngIf="product.onSale">
+      -{{ product.discountPercentage }}%
+    </span>
+  </div>
+  <div class="product-info">
+    <h3>{{ product.name }}</h3>
+    <div class="price-container">
+      <p class="price" [class.discounted]="product.onSale">
+        {{ getDisplayPrice() }} TND
+      </p>
+      <p class="original-price" *ngIf="product.onSale">
+        {{ product.price }} TND
+      </p>
+    </div>
+    <p class="description">{{ product.description }}</p>
+    <button 
+      class="btn btn-primary add-to-cart" 
+      (click)="onAddToCart()"
+      [class.added]="isAdded"
+    >
+      <span class="button-content">
+        <span class="icon">🛒</span>
+        {{ isAdded ? 'Ajouté !' : 'Ajouter au panier' }}
+      </span>
+    </button>
+  </div>
+</div> 
